@@ -151,6 +151,7 @@ Page {
 
     // load more todos
     footer: VisibilityRefreshHandler {
+      canRefresh: !dataModel.isFetchingTodos
       onRefresh: logic.fetchNextPage()
     }
 
