@@ -1,5 +1,6 @@
 import Felgo 3.0
 import QtQuick 2.0
+import QtQml 2.3
 import "../ui"
 
 Page {

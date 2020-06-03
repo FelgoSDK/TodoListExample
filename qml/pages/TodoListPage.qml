@@ -90,23 +90,12 @@ Page {
     model: filteredModel
 
     // the delegate is the template item for each entry of the list
-    delegate: SimpleRow {
-      text: viewHelper.formatTodoId(model)
-      detailText: "Title: "+title
-      style.textColor: dataModel.isDraft(model) ? "grey" : Theme.listItem.textColor
 
-      // push detail page when selected, pass chosen todo id
-      onSelected: page.navigationStack.popAllExceptFirstAndPush(detailPageComponent, { todoId: model.id })
-
-      // show marker for completed todos
-      Rectangle {
-        anchors.left: parent.left
-        anchors.top: parent.top
-        anchors.bottom: parent.bottom
-        anchors.margins: dp(4)
-        width: dp(4)
-        color: completed ? "lightgreen" : Theme.secondaryBackgroundColor
-      }
+    delegate: TodoListEntry {
+        todoDraft: dataModel.isDraft(model)
+        todoTitle: title
+        todoComplete: completed
+        todoId: id
     }
 
     // item animations, supported by list view for view model types like JsonListModel, ListModel or SortFilterProxyModel
