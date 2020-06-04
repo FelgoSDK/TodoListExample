@@ -3,6 +3,7 @@ import QtQuick 2.0
 import "model"
 import "logic"
 import "pages"
+import "ui"
 
 App {
   // You get free licenseKeys from https://felgo.com/licenseKey
@@ -26,9 +27,17 @@ App {
     logic.fetchDraftTodos()
   }
 
+  onInitTheme: {
+    Theme.colors.tintColor = colorsManager.getBaseColor()
+  }
+
   // business logic
   Logic {
     id: logic
+  }
+
+  ColorsManager {
+    id: colorsManager
   }
 
   // model
